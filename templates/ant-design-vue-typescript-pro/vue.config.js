@@ -16,7 +16,6 @@ module.exports = {
         args[0].template = './public/index.ejs'
         return args
       })
-
     // 修改loader
     config
       .module
@@ -31,7 +30,6 @@ module.exports = {
           modules: true
         }
       })
-
     // 处理node_modules下的less文件
     config
       .module
@@ -40,7 +38,6 @@ module.exports = {
       .test(/node_modules.+\.less/)
       .use('style-loader')
       .loader('style-loader')
-
     config
       .module
       .rule('less')

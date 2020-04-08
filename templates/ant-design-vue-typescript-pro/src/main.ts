@@ -19,13 +19,10 @@ import '@/style/index.css'
 window._enableRouterLocalStore = null
 
 Vue.config.productionTip = false;
-
 // 语言映射
 Vue.prototype.$locale = locale
-
 // 全局message绑定
 Vue.prototype.$message = message
-
 // 初始化全局颜色配置
 createThemeColorCss(store)
 
@@ -49,7 +46,6 @@ const initAPP = async () => {
             render: h => h(App)
           }).$mount('#root');
         }
-
         if (idx === len) {
           // 读取本地库完成
           new Vue({
@@ -71,9 +67,7 @@ const initAPP = async () => {
   // 启动监听
   if (enableRouterCache) window._enableRouterLocalStore = enableRouterLocalStore(store)
 }
-
 // 初始化系统
 initAPP()
-
 // 未登录检测 权限检测
 validateAuth(store, router)

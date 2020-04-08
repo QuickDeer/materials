@@ -107,7 +107,7 @@ export default class SearchTable extends Vue {
 
   // 筛选条件发生改变
   private formchange(data: { key: formKey, value: any }) {
-    // this.form[data.key] = data.value
+    this.form[data.key] = data.value
   }
 
   protected render() {

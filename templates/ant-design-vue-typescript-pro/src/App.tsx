@@ -21,7 +21,6 @@ export default class App extends Vue {
     'zh-TW': zh_TW,
     'en-US': en_US
   }
-  msg: string = ''
 
   protected mounted() {
     // 启动用户设备响应式布局监听
@@ -42,11 +41,9 @@ export default class App extends Vue {
   }
 
   protected render() {
-    return (
-      <LocaleProvider
-        locale={this.lanMap[this.currentLocale]}>
-        <router-view></router-view>
-      </LocaleProvider>
-    )
+    return <LocaleProvider
+      locale={this.lanMap[this.currentLocale]}>
+      <router-view></router-view>
+    </LocaleProvider>
   }
 }
