@@ -1,0 +1,43 @@
+@import '~ant-design-vue/dist/antd.less';
+
+@leftBackgroundColor: #f8f8f8;
+
+.container-box {
+  height: 100vh;
+  overflow: hidden;
+
+  & >.ant-row {
+    height: 100vh;
+
+    & >.ant-col {
+      height: 100vh;
+    }
+  }
+
+  .left-col {
+    background-color: @leftBackgroundColor;
+  }
+
+  .right-col {
+    background-color: @primary-color;
+  }
+
+  .login-form {
+    width: 400px;
+    height: 500px;
+    background-color: #fff;
+    box-shadow: 0 10px 20px 0px rgba(0, 0, 0, .05);
+    padding: 30px;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+
+    .login-form-forgot {
+      margin-right: 10px;
+    }
+  }
+
+  .language-choose {
+    margin-top: 20px;
+  }
+}
