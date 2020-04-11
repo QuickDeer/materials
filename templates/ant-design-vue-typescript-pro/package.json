@@ -1,7 +1,7 @@
 {
-  "name": "ant-design-vue-typescript-simple",
+  "name": "ant-design-vue-typescript-pro",
   "version": "0.0.1",
-  "description": "Ant Design Vue, TypeScript, Simple version",
+  "description": "Ant Design Vue, TypeScript, Pro version",
   "main": "index.js",
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/QuickDeer/materials/tree/master/templates/ant-design-vue-typescript-simple"
+    "url": "https://github.com/QuickDeer/materials/tree/master/templates/ant-design-vue-typescript-pro"
   },
   "dependencies": {
     "@antv/g2": "^3.5.3",
