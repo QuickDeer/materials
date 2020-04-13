@@ -20,24 +20,39 @@
 
   .right-col {
     background-color: @primary-color;
+    position: relative;
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
   }
 
   .login-form {
     width: 400px;
-    height: 500px;
+    // height: 500px;
     background-color: #fff;
     box-shadow: 0 10px 20px 0px rgba(0, 0, 0, .05);
     padding: 30px;
     position: absolute;
-    top: 10%;
-    left: 50%;
+    top: 20%;
+    right: 10%;
+    z-index: 10;
 
     .login-form-forgot {
       margin-right: 10px;
+    }
+
+    .ant-tabs-top-content {
+      padding: 10px;
     }
   }
 
   .language-choose {
     margin-top: 20px;
+    position: relative;
+    z-index: 10;
   }
 }

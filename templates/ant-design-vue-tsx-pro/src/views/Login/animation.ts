@@ -1,5 +1,6 @@
-import { TweenLite } from "gsap";
+import { TweenLite, Circ } from "gsap";
 
+/* eslint-disable */
 type Color = string;
 
 interface Point {
@@ -16,6 +17,7 @@ class Circle {
   pos: Point;
   radius: number;
   color: Color;
+  active!: number;
 
   constructor(pos: Point, radius: number, color: Color) {
     this.pos = pos;
@@ -23,27 +25,25 @@ class Circle {
     this.color = color;
   }
 
-  public static active: number;
-
-  public static draw(ctx: CanvasRenderingContext2D, pos: Point, radius: number, active: number) {
-    if (!active) {
+  public draw(ctx: CanvasRenderingContext2D) {
+    if (!this.active) {
       return;
     }
 
     ctx.beginPath();
-    ctx.arc(pos.x, pos.y, radius, 0, 2 * Math.PI, false);
-    ctx.fillStyle = `rgba(156, 217, 249, ${active})`;
+    ctx.arc(this.pos.x, this.pos.y, this.radius, 0, 2 * Math.PI, false);
+    ctx.fillStyle = `rgba(156, 217, 249, ${this.active})`;
     ctx.fill();
   };
 }
 
 export default class Animation {
-  private width: number = 0;
-  private height: number = 0;
-  private largeHeader: HTMLElement = null;
-  private canvas: HTMLCanvasElement = null;
-  private ctx: CanvasRenderingContext2D = null;
-  private points: Point[] = [];
+  private width!: number;
+  private height!: number;
+  private largeHeader!: HTMLElement;
+  private canvas!: HTMLCanvasElement;
+  private ctx!: CanvasRenderingContext2D;
+  private points!: Point[];
   private target: Point = {
     x: 0,
     y: 0
@@ -65,18 +65,18 @@ export default class Animation {
       y: this.height / 2
     };
 
-    this.largeHeader = document.getElementById('large-header');
+    this.largeHeader = document.getElementById('rightCol') as HTMLElement;
     this.largeHeader.style.height = `${this.height}px`;
 
-    this.canvas = <HTMLCanvasElement>document.getElementById('polyCanvas');
+    this.canvas = document.getElementById('polyCanvas') as HTMLCanvasElement;
     this.canvas.width = this.width;
     this.canvas.height = this.height;
-    this.ctx = <CanvasRenderingContext2D>this.canvas.getContext('2d');
+    this.ctx = this.canvas.getContext('2d') as CanvasRenderingContext2D;
 
     // create points
     this.points = [];
-    for(var x = 0; x < this.width; x = x + this.width / 20) {
-      for(var y = 0; y < this.height; y = y + this.height / 20) {
+    for(let x = 0; x < this.width; x = x + this.width / 20) {
+      for(let y = 0; y < this.height; y = y + this.height / 20) {
         const px = x + Math.random() * this.width / 20;
         const py = y + Math.random() * this.height / 20;
         const point = {
@@ -90,15 +90,15 @@ export default class Animation {
     }
 
     // for each point find the 5 closest points
-    for(var i = 0; i < this.points.length; i++) {
-      var closest = [];
-      var p1 = this.points[i];
+    for(let i = 0; i < this.points.length; i++) {
+      const closest = [];
+      const p1 = this.points[i];
 
-      for(var j = 0; j < this.points.length; j++) {
-        var p2 = this.points[j]
+      for(let j = 0; j < this.points.length; j++) {
+        const p2 = this.points[j]
         if (!(p1 == p2)) {
-          var placed = false;
-          for (var k = 0; k < 5; k++) {
+          let placed = false;
+          for (let k = 0; k < 5; k++) {
             if (!placed) {
               if (closest[k] == undefined) {
                 closest[k] = p2;
@@ -107,7 +107,7 @@ export default class Animation {
             }
           }
 
-          for(var k = 0; k < 5; k++) {
+          for(let k = 0; k < 5; k++) {
             if (!placed) {
               if (this.getDistance(p1, p2) < this.getDistance(p1, closest[k])) {
                 closest[k] = p2;
@@ -121,7 +121,7 @@ export default class Animation {
     }
 
     // assign a circle to each point
-    for(let i in this.points) {
+    for(const i in this.points) {
       this.points[i].circle = new Circle(
         this.points[i],
         2 + Math.random() * 2,
@@ -133,10 +133,16 @@ export default class Animation {
   // Event handling
   addListeners() {
       if (!('ontouchstart' in window)) {
-        window.addEventListener('mousemove', this.mouseMove);
+        window.addEventListener('mousemove', (event: MouseEvent) => {
+          this.mouseMove(event);
+        });
       }
-      window.addEventListener('scroll', this.scrollCheck);
-      window.addEventListener('resize', this.resize);
+      window.addEventListener('scroll', () => {
+        this.scrollCheck();
+      });
+      window.addEventListener('resize', () => {
+        this.resize();
+      });
   }
 
   mouseMove(event: MouseEvent) {
@@ -175,7 +181,7 @@ export default class Animation {
   // animation
   initAnimation() {
     this.animate();
-    for (let i in this.points) {
+    for (const i in this.points) {
       this.shiftPoint(this.points[i]);
     }
   }
@@ -184,33 +190,37 @@ export default class Animation {
     if (this.animateHeader) {
       this.ctx.clearRect(0, 0, this.width, this.height);
 
-      for(let i in this.points) {
+      for(const i in this.points) {
+        const currentPoint: Point = this.points[i];
+
         // detect points in range
-        if(Math.abs(this.getDistance(this.target, this.points[i])) < 4000) {
-          this.points[i].active = 0.3;
-          this.points[i].circle.active = 0.6;
-        } else if(Math.abs(this.getDistance(this.target, this.points[i])) < 20000) {
-          this.points[i].active = 0.1;
-          this.points[i].circle.active = 0.3;
-        } else if(Math.abs(this.getDistance(this.target, this.points[i])) < 40000) {
-          this.points[i].active = 0.02;
-          this.points[i].circle.active = 0.1;
+        if(Math.abs(this.getDistance(this.target, currentPoint)) < 4000) {
+          currentPoint.active = 0.3;
+          currentPoint.circle!.active = 0.6;
+        } else if(Math.abs(this.getDistance(this.target, currentPoint)) < 20000) {
+          currentPoint.active = 0.1;
+          currentPoint.circle!.active = 0.3;
+        } else if(Math.abs(this.getDistance(this.target, currentPoint)) < 40000) {
+          currentPoint.active = 0.02;
+          currentPoint.circle!.active = 0.1;
         } else {
-          this.points[i].active = 0;
-          this.points[i].circle.active = 0;
+          currentPoint.active = 0;
+          currentPoint.circle!.active = 0;
         }
 
-        this.drawLines(this.points[i]);
-        this.points[i].circle.draw();
+        this.drawLines(currentPoint);
+        currentPoint.circle?.draw(this.ctx);
       }
     }
-    requestAnimationFrame(this.animate);
+    requestAnimationFrame(() => {
+      this.animate()
+    });
   }
 
   shiftPoint(p: Point) {
     TweenLite.to(p, 1 + 1 * Math.random(), {
-      x: p.originX - 50 + Math.random()*100,
-      y: p.originY - 50 + Math.random()*100,
+      x: (p.originX || 0) - 50 + Math.random()*100,
+      y: (p.originY || 0) - 50 + Math.random()*100,
       ease: Circ.easeInOut,
       onComplete: () => {
         this.shiftPoint(p);
@@ -224,10 +234,10 @@ export default class Animation {
       return;
     }
 
-    for(let i in p.closest) {
+    for(const i in p.closest) {
       this.ctx.beginPath();
       this.ctx.moveTo(p.x, p.y);
-      this.ctx.lineTo(p.closest[i].x, p.closest[i].y);
+      this.ctx.lineTo(p.closest[i as any].x, p.closest[i as any].y);
       this.ctx.strokeStyle = `rgba(156, 217, 249, ${p.active})`;
       this.ctx.stroke();
     }

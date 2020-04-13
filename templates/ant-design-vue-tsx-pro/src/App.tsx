@@ -6,7 +6,7 @@ import './style/index.less';
 export default class App extends Vue {
   protected render() {
     return (
-      <div className="container">
+      <div class="container">
         <router-view></router-view>
       </div>
     );

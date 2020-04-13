@@ -9,10 +9,22 @@ const locale: LocaleMessageObject = {
   },
   username: '用户名',
   password: '密码',
-  login: '登录',
-  register: '注册',
+  login: {
+    title: '登录APM',
+    button: '登录'
+  },
+  register: {
+    title: '创建账号',
+    button: '注册'
+  },
   forget: '忘记密码',
   remember: '记住登录',
+  message: {
+    accountLoginError: '用户或密码错误',
+    phoneLoginError: '手机号或验证码错误',
+    usernameRequired: '请输入用户名',
+    passwordRequired: '请输入密码',
+  },
 };
 
 export default locale;
