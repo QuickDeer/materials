@@ -34,7 +34,7 @@ export const team = [
 export const programStatis = [
   {
     id: 0,
-    time: '2019-05-06',
+    time: '2020-05-06',
     title: 'Alipay',
     icon: team[0].icon,
     team: team[0].team,
@@ -42,7 +42,7 @@ export const programStatis = [
   },
   {
     id: 1,
-    time: '2019-05-06',
+    time: '2020-05-06',
     title: 'Facebook',
     icon: team[1].icon,
     team: team[1].team,
@@ -50,7 +50,7 @@ export const programStatis = [
   },
   {
     id: 2,
-    time: '2019-05-06',
+    time: '2020-05-06',
     title: 'Wechat',
     icon: team[2].icon,
     team: team[2].team,
@@ -58,7 +58,7 @@ export const programStatis = [
   },
   {
     id: 3,
-    time: '2019-05-06',
+    time: '2020-05-06',
     title: 'Zhihu',
     icon: team[3].icon,
     team: team[3].team,
@@ -66,7 +66,7 @@ export const programStatis = [
   },
   {
     id: 4,
-    time: '2019-05-06',
+    time: '2020-05-06',
     title: 'Ant Design',
     icon: team[4].icon,
     team: team[4].team,
@@ -74,7 +74,7 @@ export const programStatis = [
   },
   {
     id: 6,
-    time: '2019-05-06',
+    time: '2020-05-06',
     title: 'Github',
     icon: team[5].icon,
     team: team[5].team,
@@ -87,42 +87,42 @@ export const moment = [
     id: 0,
     name: '曲丽丽',
     des: '曲丽丽 在 高逼格设计天团 新建项目 六月迭代',
-    time: '2019-05-05'
+    time: '2020-05-05'
   },
   {
     id: 1,
     name: '曲丽丽',
     des: '曲丽丽 在 高逼格设计天团 新建项目 六月迭代',
-    time: '2019-05-05'
+    time: '2020-05-05'
   },
   {
     id: 2,
     name: '曲丽丽',
     des: '曲丽丽 在 高逼格设计天团 新建项目 六月迭代',
-    time: '2019-05-05'
+    time: '2020-05-05'
   },
   {
     id: 3,
     name: '曲丽丽',
     des: '曲丽丽 在 高逼格设计天团 新建项目 六月迭代',
-    time: '2019-05-05'
+    time: '2020-05-05'
   },
   {
     id: 4,
     name: '曲丽丽',
     des: '曲丽丽 在 高逼格设计天团 新建项目 六月迭代',
-    time: '2019-05-05'
+    time: '2020-05-05'
   },
   {
     id: 5,
     name: '曲丽丽',
     des: '曲丽丽 在 高逼格设计天团 新建项目 六月迭代',
-    time: '2019-05-05'
+    time: '2020-05-05'
   },
   {
     id: 6,
     name: '曲丽丽',
     des: '曲丽丽 在 高逼格设计天团 新建项目 六月迭代',
-    time: '2019-05-05'
+    time: '2020-05-05'
   }
 ]

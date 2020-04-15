@@ -20,6 +20,7 @@ export default class AsyncPage extends Vue {
       this.template = Template.default;
     }, this.delay || 0);
   }
+
   render() {
     const Page = this.template;
     return <Page />

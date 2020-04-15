@@ -5,14 +5,17 @@
   overflow: hidden;
   flex-direction: row;
   display: flex;
+
   > aside {
     transition: width .2s;
     flex: none;
     box-shadow: 2px 0 8px rgba(29, 35, 41, .05);
   }
+
   > section {
     background: #f0f2f5;
   }
+
   .fixedLeftMenu {
     > div {
       display: flex;
@@ -27,10 +30,12 @@
       }
     }
   }
+
   .contentLayout{
     display: flex;
     flex: 1;
     flex-direction: column;
+
     .fixedHeader {
       position: fixed;
       width: 100%;
@@ -38,6 +43,7 @@
       right: 0;
       overflow: hidden;
     }
+
     > header {
       display: flex;
       width: 100%;
@@ -70,6 +76,7 @@
     }
   }
 }
+
 .dark {
   > aside {
     background: #001529!important;
@@ -78,6 +85,7 @@
     background: #f0f2f5;
   }
 }
+
 .darkMenu{
   :nth-child(2) {
     > div {
@@ -90,6 +98,7 @@
     }
   }
 }
+
 .lightMenu {
   :nth-child(2) {
     > div {
@@ -102,48 +111,60 @@
     }
   }
 }
+
 .lightHeader {
   position: relative;
   background: #fff!important;
 }
-.darkHeader, {
+
+.darkHeader {
   position: relative;
   background: #001529!important;
 }
+
 .mobileLogo {
   font-size: 20px;
 }
+
 .siderMenuWrap {
   border-right: 1px solid #e8e8e8!important;
   box-shadow: 2px 0 8px 0 rgba(29, 35, 41, 0.5);
 }
+
 .siderMenu {
   border-right: none!important;
 }
+
 .light {
   .siderMenu {
     width: calc(~"100% - 1px")!important;
   }
 }
+
 .siderMenuTop {
   line-height: 64px!important;
 }
+
 .navTop {
   flex: 1;
   height: inherit;
   overflow: hidden;
 }
+
 .leftMenuWrap{
   padding: 16px 0;
 }
+
 .light {
   .leftMenuWrap {
     border-right: 1px solid #e8e8e8;
   }
 }
+
 .siderMenuTopDark {
   width: 100%!important;
 }
+
 .notGlobalScroll {
   display: flex;
   flex: 1;
@@ -158,11 +179,13 @@
     overflow: auto;
   }
 }
+
 .topNavOwnerScroll {
   >:last-child {
     height: calc(~"100% - 54px")!important;
   }
 }
+
 .contentTopNav{
   flex-direction: column;
   display: flex;
@@ -171,6 +194,11 @@
     overflow: auto;
   }
 }
+
 .paddingTopHeader {
   padding-top: 64px;
+}
+
+.ant-layout-content {
+  background-color: #fff;
 }

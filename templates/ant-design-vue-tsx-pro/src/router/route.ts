@@ -1,5 +1,4 @@
-// import { BasicLayout, RouterLayout } from '@/layouts';
-
+import { BasicLayout, RouterLayout } from '@/layouts';
 import defaultHomeKey from '@/config/default.homeKey';
 
 // router config
@@ -14,61 +13,40 @@ import defaultHomeKey from '@/config/default.homeKey';
 export default () => [
   // 公有路由
   {
-    id: defaultHomeKey,
-    name: defaultHomeKey,
-    path: defaultHomeKey.toLowerCase(),
-    icon: 'home',
-    alias: '/',
-    component: () => import(/* webpackChunkName: "home" */ '@/views/Home')
-  },
-  {
-    path: '/about',
-    name: 'About',
-    public: true,
-    component: () => import(/* webpackChunkName: "about" */ '@/views/About'),
-  },
-  {
     id: 'Login',
     name: 'Login',
     public: true,
     path: '/login',
     component: () => import(/* webpackChunkName: "login" */ '@/views/Login'),
   },
-  {
-    id: 'notfound',
-    name: 'notfound',
-    public: true,
-    path: '/*',
-    component: () => import(/* webpackChunkName: "notfound" */ '@/views/NotFound')
-  },
 
   // 私有路由
-  // {
-  //   id: 'basic-layout',
-  //   name: 'basic-layout',
-  //   path: '/',
-  //   component: BasicLayout,
-  //   /** 路由从此处开始配置 id与name需要与path保持一致
-  //       菜单会根以下的层级进行自动生成
-  //       i18国际化映射将会根据id值自src/locale里面的相应语言配置文字
-  //       若路由配置具备module属性，代表该路由绑定了名为该属性的状态库，tab页在执行关闭时，会自动清空该状态库内所有状态
-  //       注：module: [] 可以指定多个状态库的名字
-  //   **/
-  //   children: [
-  //     {
-  //       id: defaultHomeKey,
-  //       name: defaultHomeKey,
-  //       path: defaultHomeKey,
-  //       icon: 'home',
-  //       alias: '/',
-  //       component: () => import('@/views/Home')
-  //     },
-  //     {
-  //       id: 'form',
-  //       name: 'form',
-  //       path: 'form',
-  //       icon: 'form',
-  //       component: RouterLayout,
+  {
+    id: 'basic-layout',
+    name: 'basic-layout',
+    path: '/',
+    component: BasicLayout,
+    /** 路由从此处开始配置 id与name需要与path保持一致
+        菜单会根以下的层级进行自动生成
+        i18国际化映射将会根据id值自src/locale里面的相应语言配置文字
+        若路由配置具备module属性，代表该路由绑定了名为该属性的状态库，tab页在执行关闭时，会自动清空该状态库内所有状态
+        注：module: [] 可以指定多个状态库的名字
+    **/
+    children: [
+      {
+        id: defaultHomeKey,
+        name: defaultHomeKey,
+        path: defaultHomeKey.toLowerCase(),
+        icon: 'home',
+        alias: '/',
+        component: () => import('@/views/Home')
+      },
+      {
+        id: 'form',
+        name: 'form',
+        path: 'form',
+        icon: 'form',
+        component: RouterLayout,
   //       children: [
   //         {
   //           id: 'basicForm',
@@ -274,7 +252,16 @@ export default () => [
   //           ]
   //         }
   //       ]
-  //     },
-  //   ]
-  // }
+      },
+    ]
+  },
+
+  // 404
+  {
+    id: 'notfound',
+    name: 'notfound',
+    public: true,
+    path: '/*',
+    component: () => import(/* webpackChunkName: "notfound" */ '@/views/NotFound')
+  }
 ];

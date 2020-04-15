@@ -3,7 +3,6 @@ import { Action } from 'vuex-class';
 import { Radio } from 'ant-design-vue';
 
 import { translate } from '@/i18n';
-import { HelloWorld } from '@/components';
 
 @Component
 export default class Home extends Vue {
@@ -29,8 +28,6 @@ export default class Home extends Vue {
             <Radio.Button value="cn">中文</Radio.Button>
           </Radio.Group>
         </div>
-
-        <HelloWorld msg={translate('welcome')}/>
       </div>
     );
   }

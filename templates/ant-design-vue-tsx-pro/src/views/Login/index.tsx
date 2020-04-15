@@ -9,8 +9,11 @@ import defaultHomeKey from '@/config/default.homeKey';
 
 import Animation from './animation';
 
+import styles from './index.less';
 
-import './index.less';
+interface UserInfo {
+  [propsName: string]: string;
+}
 
 @Component
 export default class Login extends Vue {
@@ -41,9 +44,9 @@ export default class Login extends Vue {
   protected handleSubmit(event: Event) {
     event.preventDefault();
 
-    this.form.validateFields(async (errors: Error[], values: any) => {
+    this.form.validateFields(async (errors: Error[], values: UserInfo) => {
       if (!errors) {
-        const loginInfo: { [propsName: string]: string } = {};
+        const loginInfo: UserInfo = {};
 
         if (this.loginType === 'account') {
           // 账号密码登录
@@ -64,7 +67,7 @@ export default class Login extends Vue {
         }
 
         this.$router.push({
-          name: defaultHomeKey
+          name: defaultHomeKey.toLowerCase()
         });
       }
     });
@@ -74,25 +77,25 @@ export default class Login extends Vue {
     const { getFieldDecorator } = this.form;
 
     return (
-      <div class="container-box">
+      <div class={styles.containerBox}>
         {/* 背景布局 */}
         <Row>
-          <Col class="right-col" id="rightCol" span="6" push="18">
-            <div class="language-choose">
+          <Col class={styles.rightCol} id="rightCol" span="6" push="18">
+            <div class={styles.languageChoose}>
               <Radio.Group defaultValue={defaultLanguage} buttonStyle="solid" onChange={this.changeLanguage}>
                 <Radio.Button value="en">English</Radio.Button>
                 <Radio.Button value="cn">中文</Radio.Button>
               </Radio.Group>
             </div>
-            <canvas id="polyCanvas"></canvas>
+            <canvas id="polyCanvas" class={styles.polyCanvas}></canvas>
           </Col>
-          <Col class="left-col" span="18" pull="6"></Col>
+          <Col class={styles.leftCol} span="18" pull="6"></Col>
         </Row>
 
         <Form
           id="loginForm"
           form={this.form}
-          class="login-form"
+          class={styles.loginForm}
           onSubmit={this.handleSubmit}
         >
           <Tabs defaultActiveKey="1">

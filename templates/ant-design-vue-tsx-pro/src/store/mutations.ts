@@ -2,7 +2,7 @@ import { MutationTree } from 'vuex';
 
 import { i18n } from '@/i18n';
 
-import createMenu from '@/config/menu';
+// import createMenu from '@/config/menu';
 import { RootState } from './types';
 
 const mutations: MutationTree<RootState> = {
@@ -12,9 +12,9 @@ const mutations: MutationTree<RootState> = {
   },
 
   // 设置登录信息
-  SET_LOGIN_INFO(state, info) {
+  // SET_LOGIN_INFO(state, info) {
     // 根据权限 生成菜单
-    const authMap = (info.auth as { [x: string]: any })[info.username];
+    // const authMap = (info.auth as { [x: string]: any })[info.username];
     // const menuTree = createMenu(authMap);
 
     // state.menuTree = menuTree;
@@ -24,7 +24,7 @@ const mutations: MutationTree<RootState> = {
     //   ...info,
     //   auth: authMap
     // };
-  },
+  // },
 
   // 退出登录
   // LOGOUT(state) {

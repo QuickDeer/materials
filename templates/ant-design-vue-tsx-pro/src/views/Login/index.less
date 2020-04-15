@@ -2,7 +2,7 @@
 
 @leftBackgroundColor: #f8f8f8;
 
-.container-box {
+.containerBox {
   height: 100vh;
   overflow: hidden;
 
@@ -14,23 +14,23 @@
     }
   }
 
-  .left-col {
+  .leftCol {
     background-color: @leftBackgroundColor;
   }
 
-  .right-col {
+  .rightCol {
     background-color: @primary-color;
     position: relative;
-
-    canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 1;
-    }
   }
 
-  .login-form {
+  .polyCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  .loginForm {
     width: 400px;
     // height: 500px;
     background-color: #fff;
@@ -50,7 +50,7 @@
     }
   }
 
-  .language-choose {
+  .languageChoose {
     margin-top: 20px;
     position: relative;
     z-index: 10;

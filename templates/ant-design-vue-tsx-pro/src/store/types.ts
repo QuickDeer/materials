@@ -1,6 +1,12 @@
 export type Language = string;
 
+export type theme = 'dark' | 'light';
+
+export type deviceType = 'desktop' | 'mobile' | 'tablet';
+
 export interface RootState {
+  theme: theme;
+  deviceType: deviceType;
   language: Language;
   version?: string;
 }
