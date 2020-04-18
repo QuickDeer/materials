@@ -1,0 +1,44 @@
+{
+  "name": "koa-mongodb-graphql",
+  "version": "0.0.1",
+  "description": "koa, nodejs, mongodb, graphql",
+  "main": "index.js",
+  "scripts": {
+    "build-ts": "tsc",
+    "watch-ts": "tsc -w",
+    "copy-static-assets": "ts-node copyStaticAssets.ts",
+    "serve": "node dist/server.js",
+    "watch-server": "nodemon --watch src -e ts,tsx --exec ts-node src/server.ts",
+    "build": "npm run lint && npm run build-ts && npm run copy-static-assets",
+    "start": "npm run serve"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@koa/cors": "^3.0.0",
+    "@koa/router": "^9.0.0",
+    "dotenv": "^8.2.0",
+    "graphql": "^15.0.0",
+    "koa": "^2.11.0",
+    "koa-graphql": "^0.8.0",
+    "koa-mount": "^4.0.0",
+    "mongoose": "^5.9.9",
+    "type-graphql": "^0.17.6",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^8.2.0",
+    "@types/koa": "^2.11.3",
+    "@types/koa-graphql": "^0.8.3",
+    "@types/koa-mount": "^4.0.0",
+    "@types/koa__cors": "^3.0.1",
+    "@types/koa__router": "^8.0.2",
+    "@types/mongoose": "^5.7.12",
+    "@types/node": "^13.13.0",
+    "nodemon": "^2.0.3",
+    "shelljs": "^0.8.3",
+    "ts-node": "^8.8.2",
+    "typescript": "^3.8.3"
+  }
+}
