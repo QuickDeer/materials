@@ -1,4 +1,6 @@
 import { GraphQLObjectType, GraphQLString, GraphQLSchema } from 'graphql';
+import { Mutations } from './mutations';
+
 import { ProjectGraphQLType } from './project';
 import ProjectSchema from '../models/project';
 
@@ -18,5 +20,6 @@ export const RootQuery = new GraphQLObjectType({
 });
 
 export default new GraphQLSchema({
-  query: RootQuery
+  query: RootQuery,
+  mutation: Mutations
 });

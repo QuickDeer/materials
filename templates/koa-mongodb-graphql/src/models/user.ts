@@ -9,7 +9,7 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
   name: String,
   gender: String,
-  last_login_time: String,
+  last_login_time: Date,
 });
 
 export default mongoose.model('User', UserSchema);

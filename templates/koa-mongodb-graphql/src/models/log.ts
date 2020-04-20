@@ -7,12 +7,12 @@ const Schema = mongoose.Schema;
 */
 
 const LogSchema = new Schema({
-  operate_time: Date,
   operator: String,
   project_id: String,
   language_id: String,
   origin_content: String,
   new_content: String,
+  operate_time: Date,
 });
 
 export default mongoose.model('Log', LogSchema);
